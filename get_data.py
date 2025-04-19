@@ -64,6 +64,11 @@ descriptions_df['sentiment'] = np.select(conditions, choices)
 descriptions_df['description'] = descriptions_df['description'].apply(html.unescape)
 descriptions_df['description'] = descriptions_df['description'].str.replace(r'[\n\r\t]+', ' ', regex=True)
 
+def strip_non_ascii(text):
+    return ''.join([char for char in text if char.isascii()])
+
+descriptions_df['description'] = descriptions_df['description'].apply(strip_non_ascii)
+
 reviews_df = pd.read_csv("bgg-15m-reviews.csv")
 reviews_df = reviews_df[["ID", "rating"]]
 
