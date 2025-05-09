@@ -36,7 +36,28 @@ cloud <- wordcloud2(word_counts, size = 2,
 cloud
 saveWidget(cloud,"wordcloud.html",selfcontained = F)
 
-model_metrics <- tibble(
+pos_word_counts <- read_csv("bg_word_counts_pos.csv")
+neg_word_counts <- read_csv("bg_word_counts_neg.csv")
+
+pos_cloud <- wordcloud2(pos_word_counts, size = 2,
+                        backgroundColor = "#faf0c8",
+                        color=rep_len( c("#db1548", "#071df4", "#f0cc00", "#f57135",  "#40d74f"), nrow(word_counts) ),
+                        minRotation = -pi/6, maxRotation = -pi/6, rotateRatio = 1,
+                        widgetsize = c(700, 1000))
+
+pos_cloud
+saveWidget(pos_cloud,"pos_wordcloud.html",selfcontained = F)
+
+neg_cloud <- wordcloud2(neg_word_counts, size = 2,
+                        backgroundColor = "#faf0c8",
+                        color=rep_len( c("#db1548", "#071df4", "#f0cc00", "#f57135",  "#40d74f"), nrow(word_counts) ),
+                        minRotation = -pi/6, maxRotation = -pi/6, rotateRatio = 1,
+                        widgetsize = c(700, 1000))
+
+neg_cloud
+saveWidget(neg_cloud,"neg_wordcloud.html",selfcontained = F)
+
+smodel_metrics <- tibble(
   Model = c("LR", "NB", "RNN", "BERT"),
   precision = c(0.42, 0.44, 0.52, 0.56),
   recall = c(0.34, 0.41, 0.05, 0.54),
