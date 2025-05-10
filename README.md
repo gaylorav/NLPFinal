@@ -11,7 +11,7 @@ classes (positive and negative). In `./visualizations`,
 `data_visualizations.R` utilizes word counts stored in .csv files to
 create graphs, tables, and word clouds that are stored in the same
 directory. The word counts are retrieved by running
-`metrics_and_viz_data.ipynb`In the top-level directory, `get_data.py`
+`metrics_and_viz_data.ipynb`. In the top-level directory, `get_data.py`
 runs python code to fetch the appropriate csv files, trim them down to
 the necessary components, then downloads them as `bg_descriptions.csv`
 (three classes) and `bg_descriptions_v2.csv` (binary). `baseline.py`
